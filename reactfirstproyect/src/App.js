@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Button from './components/button/index'
 import Sidebar from './components/button/sidebar';
-import Navbar from './components/navbar';
+import NavBar from './components/Navbar';
+import ItemListContainer from './components/ItemListContainer';
 function App() {
   const [isOpen, setOpen]= useState(false);
  const onHandlerClick =()=>{
@@ -16,20 +17,19 @@ function App() {
       <Sidebar onClose={onHandlerClick} isOpen={isOpen}>
         <h2>Item list</h2>
       </Sidebar>
-      <nav className='AllList'>
-      <li className='botonlista'><Navbar text ='Item 1' onHandlerClick = {onHandlerClick}/></li>
-        <li className='botonlista'><Navbar text ='Item 2' onHandlerClick = {onHandlerClick}/></li>
-        <li className='botonlista'><Navbar text ='Item 3' onHandlerClick = {onHandlerClick}/></li>
-        <li className='botonlista'><Navbar text ='Item 4' onHandlerClick = {onHandlerClick}/></li>
-      </nav>
-      <header className="App-header">
+      <NavBar></NavBar>
       
+      
+      <header className="App-header">
+      <ItemListContainer gretting = {'Burger'}></ItemListContainer>
 
         
       
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          
           Edit <code>src/App.js</code> and save to reload.
+          
         </p>
        <Button text='Clickeame' onHandlerClick ={onHandlerClick}/>
       
