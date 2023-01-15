@@ -1,48 +1,30 @@
-import React, { useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from './components/button/index'
-import Sidebar from './components/button/sidebar';
-import NavBar from './components/Navbar';
-import ItemListContainer from './components/ItemListContainer';
+import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer";
+import NavBar from "./componentes/NavBar/NavBar";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer";
+import LandingPage from './componentes/LandingPage/LandingPage.js'
+
+
 function App() {
-  const [isOpen, setOpen]= useState(false);
- const onHandlerClick =()=>{
-  setOpen(!isOpen);
- }
   return (
-
-    
-    <div className="App">
-      <Sidebar onClose={onHandlerClick} isOpen={isOpen}>
-        <h2>Item list</h2>
-      </Sidebar>
-      <NavBar></NavBar>
+    <BrowserRouter>
       
-      
-      <header className="App-header">
-      <ItemListContainer gretting = {'Burger'}></ItemListContainer>
-
-        
-      
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <NavBar />
+           <Routes>   
+           {/* <Route></Route> */}
+           {/* <div className="container-app"> */}
+           <Route path='/' element={<LandingPage />}   />
+          <Route path='/items' element={<ItemListContainer />}   />
+          <Route path='/item/:itemId' element={<ItemDetailContainer />} / >  
+          <Route path='/category/:id' element={<ItemListContainer />} / >  
+            
+         {/*  </div> */}
+           
           
-          Edit <code>src/App.js</code> and save to reload.
-          
-        </p>
-       <Button text='Clickeame' onHandlerClick ={onHandlerClick}/>
+        </Routes>
       
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    </BrowserRouter>
   );
 }
 
